@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace EF_ModelFirst
+namespace EF_ModelFirst.Model
 {
     public partial class Customer
     {
@@ -12,9 +12,9 @@ namespace EF_ModelFirst
         public string CustomerId { get; set; }
         public string ContactName { get; set; }
         public string City { get; set; }
-        public string Country { get; set; } 
+        public string Country { get; set; }
         public string PostalCode { get; set; }
-   
+
         public virtual ICollection<Order> Orders { get; set; }
     }
 }

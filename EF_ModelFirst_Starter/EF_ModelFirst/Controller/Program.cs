@@ -2,7 +2,7 @@
 using System;
 using System.Linq;
 
-namespace EF_ModelFirst
+namespace EF_ModelFirst.Controller
 {
     class Program
     {
