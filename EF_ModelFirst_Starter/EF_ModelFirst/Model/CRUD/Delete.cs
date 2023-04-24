@@ -2,16 +2,14 @@
 
 namespace EF_ModelFirst;
 
-public static class Delete
+public class Delete : DataAction
 {
-    public static void ExecuteQuery(int traineeID)
+    public override void ExecuteQuery(int customerID)
     {
-        using (var db = new AcademyContext())
+        using (var db = new SouthwindContext())
         {
-            var query = $"DELETE FROM Trainees WHERE TraineeID = {traineeID}";
-
-            var traineeToDelete = db.Trainees.Find(traineeID);
-            db.Trainees.Remove(traineeToDelete);
+            var customerToDelete = db.Customers.Find(customerID);
+            db.Customers.Remove(customerToDelete);
             db.SaveChanges();
 
         }
