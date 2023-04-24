@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 
-namespace EF_ModelFirst.Model
+namespace EF_ModelFirst;
 {
     public partial class SouthwindContext : DbContext
     {
