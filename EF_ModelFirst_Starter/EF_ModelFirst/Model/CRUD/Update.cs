@@ -1,7 +1,6 @@
 ﻿using System.Data.SqlClient;
 
-namespace AcademySqlClient;
-
+namespace EF_ModelFirst;
 public static class Update
 {
     public static void ExecuteQuery(int traineeID, string column, string value)

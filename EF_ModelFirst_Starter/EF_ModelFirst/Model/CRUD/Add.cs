@@ -1,6 +1,6 @@
 ﻿using System.Data.SqlClient;
 
-namespace AcademySqlClient;
+namespace EF_ModelFirst;
 
 public static class Add
 {
