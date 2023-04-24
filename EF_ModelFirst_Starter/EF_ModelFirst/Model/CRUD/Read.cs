@@ -1,22 +1,22 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace EF_ModelFirst;
 
-public static class Read
+public class Read : DataAction
 {
-    public static void ExecuteQuery(int choice)
+    public override void ExecuteQuery(int choice)
     {
-        var trainees = new List<Trainee>();
-
-        using (var db = new AcademyContext())
+        using (var db = new SouthwindContext())
         {
             switch (choice)
             {
                 case -1:
-                    foreach (var trainee in db.Trainees) Console.WriteLine(trainee);
+                    foreach (var customer in db.Customers) Console.WriteLine(customer);
                     break;
                 default:
-                    Console.WriteLine(db.Trainees.Find(choice));
+                    Console.WriteLine(db.Customers.Find(choice));
                     break;
             }
 

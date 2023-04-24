@@ -1,16 +1,16 @@
 ﻿using System.Data.SqlClient;
 
 namespace EF_ModelFirst;
-public static class Update
+public class Update : DataAction
 {
-    public static void ExecuteQuery(int traineeID, string column, string value)
+    public override void ExecuteQuery(int customerID, string column, string value)
     {
-        using (var db = new AcademyContext())
+        using (var db = new SouthwindContext())
         {
-            var selectedTrainee = db.Trainees.Find(traineeID);
+            var selectedCustomer = db.Customers.Find(customerID);
 
             // actually update the data
-            selectedTrainee.GetType().GetProperty(column).SetValue(selectedTrainee, value);
+            selectedCustomer.GetType().GetProperty(column).SetValue(selectedCustomer, value);
             db.SaveChanges();
         }
     }

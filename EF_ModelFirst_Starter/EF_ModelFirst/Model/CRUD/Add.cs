@@ -1,16 +1,17 @@
-﻿using System.Data.SqlClient;
+﻿using EF_ModelFirst.Migrations;
+using System.Data.SqlClient;
 
 namespace EF_ModelFirst;
 
-public static class Add
+public class Add : DataAction
 {
-    public static void ExecuteQuery( string name, string course, string location)
+    public override void ExecuteQuery( string name, string city, string country, string postalCode)
     {
-        using (var db = new AcademyContext())
+        using (var db = new SouthwindContext())
         {
-            var newTrainee = new Trainee() { Name = name, Course = course, Location = location };
+            var newCustomer = new Customer() { ContactName = name, City = city, Country = country, PostalCode = postalCode };
 
-            db.Trainees.Add(newTrainee);
+            db.Customers.Add(newCustomer);
 
             db.SaveChanges();
 
