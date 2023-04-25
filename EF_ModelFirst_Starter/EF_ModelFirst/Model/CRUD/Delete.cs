@@ -2,10 +2,12 @@
 
 namespace EF_ModelFirst;
 
-public class Delete : DataAction
+public class Delete : IDataAction
 {
-    public override void ExecuteQuery(int customerID)
+    public void Execute()
     {
+        string customerID = View.GetIDData();
+
         using (var db = new SouthwindContext())
         {
             var customerToDelete = db.Customers.Find(customerID);
