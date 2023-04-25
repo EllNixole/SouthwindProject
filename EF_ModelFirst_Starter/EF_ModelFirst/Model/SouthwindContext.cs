@@ -18,7 +18,4 @@ public partial class SouthwindContext : DbContext
             options.UseSqlServer(@"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = Southwind;");
         }
     }
-
-
-
 }
