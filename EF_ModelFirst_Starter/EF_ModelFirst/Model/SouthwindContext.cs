@@ -23,7 +23,3 @@ public partial class SouthwindContext : DbContext
         }
     }
 }
-
-
-
-}
