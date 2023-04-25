@@ -4,6 +4,7 @@
 namespace EF_ModelFirst;
 
 
+
 public partial class SouthwindContext : DbContext
 {
     public static SouthwindContext Instance { get; } = new SouthwindContext();
@@ -14,6 +15,7 @@ public partial class SouthwindContext : DbContext
     public DbSet<OrderDetail> OrderDetails { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
+
     {
         if (!options.IsConfigured)
         {
