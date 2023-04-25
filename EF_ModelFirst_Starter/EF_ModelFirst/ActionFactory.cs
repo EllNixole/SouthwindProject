@@ -4,12 +4,12 @@ namespace EF_ModelFirst;
 
 public class ActionFactory
 {
-    public static IDataAction GetAction(int input)
+    public static DataAction GetAction(int input)
     {
         switch (input)
         {
             case 1:
-                return new Create();
+                return new Add();
             case 2:
                 return new Read();
             case 3:
