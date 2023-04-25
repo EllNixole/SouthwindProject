@@ -3,9 +3,11 @@
 
 namespace EF_ModelFirst;
 
+
 public partial class SouthwindContext : DbContext
 {
-    public static SouthwindContext Instance { get; } = new SouthwindContext();
+     public static SouthwindContext Instance { get; } = new SouthwindContext();
+
 
     public DbSet<Customer> Customers { get; set; }
     public DbSet<Order> Orders { get; set; }
