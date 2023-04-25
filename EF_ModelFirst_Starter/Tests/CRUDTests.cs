@@ -104,16 +104,16 @@ namespace Tests
         [TestFixture]
         public class ExceptionTests 
         {
-            /*[Test]
-            public void TestAddWithNullValues()
-            {
-                using (var db = new SouthwindContext())
-                {
-                    var add = new Add();
-                    Assert.That(() => add.Execute(null), Throws.InstanceOf<ArgumentNullException>()
-                        .With.Message.Contain("Input cannot be null."));
-                }
-            }*/
+            //[Test]
+            //public void TestAddWithNullValues()
+            //{
+            //    using (var db = new SouthwindContext())
+            //    {
+            //        var add = new Add();
+            //        Assert.That(() => add.Execute(null), Throws.InstanceOf<ArgumentNullException>()
+            //            .With.Message.Contain("Input cannot be null."));
+            //    }
+            //}
 
             [Test]
             public void TestReadWithNonExistentCustomerId()
