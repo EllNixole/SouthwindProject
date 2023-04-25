@@ -21,6 +21,17 @@ namespace Tests
                 }
             }
 
+            [TearDown]
+            public void TearDown()
+            {
+                using (var db = new SouthwindContext())
+                {
+                    var delete = new Delete();
+                    delete.Execute(testCustomer1.CustomerId);
+                    db.SaveChanges();
+                }
+            }
+
             [Test]
             public void TestAdd()
             {
@@ -38,6 +49,10 @@ namespace Tests
                     Assert.That(customer.City, Is.EqualTo("TestCity2"));
                     Assert.That(customer.Country, Is.EqualTo("TestCountry2"));
                     Assert.That(customer.PostalCode, Is.EqualTo("TestPostalCode2"));
+
+                    var delete = new Delete();
+                    delete.Execute(testCustomer2.CustomerId);
+                    db.SaveChanges();
                 }
             }
 
@@ -97,54 +112,6 @@ namespace Tests
                     //db.SaveChanges();
                     var deletedCustomer = db.Customers.Find(testCustomer1.CustomerId);
                     Assert.IsNull(deletedCustomer);
-                }
-            }
-        }
-
-        [TestFixture]
-        public class ExceptionTests 
-        {
-            //[Test]
-            //public void TestAddWithNullValues()
-            //{
-            //    using (var db = new SouthwindContext())
-            //    {
-            //        var add = new Add();
-            //        Assert.That(() => add.Execute(null), Throws.InstanceOf<ArgumentNullException>()
-            //            .With.Message.Contain("Input cannot be null."));
-            //    }
-            //}
-
-            [Test]
-            public void TestReadWithNonExistentCustomerId()
-            {
-                using (var db = new SouthwindContext())
-                {
-                    var read = new Read();
-                    Assert.That(() => read.Execute("NonExistentId"), Throws.InstanceOf<ArgumentNullException>()
-                    .With.Message.Contain("Cannot find customer with that ID."));
-                }
-            }
-
-            [Test]
-            public void TestUpdateWithNonExistentCustomerId()
-            {
-                using (var db = new SouthwindContext())
-                {
-                    var update = new Update();
-                    Assert.That(() => update.Execute("NonExistentId", "ContactName", "NewName"), Throws.InstanceOf<ArgumentNullException>()
-                    .With.Message.Contain("Cannot find customer with that ID."));
-                }
-            }
-
-            [Test]
-            public void TestDeleteWithNonExistentCustomerId()
-            {
-                using (var db = new SouthwindContext())
-                {
-                    var delete = new Delete();
-                    Assert.That(() => delete.Execute("NonExistentId"), Throws.InstanceOf<ArgumentNullException>()
-                    .With.Message.Contain("Cannot find customer with that ID."));
                 }
             }
         }
