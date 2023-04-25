@@ -2,7 +2,7 @@
 
 
 namespace EF_ModelFirst;
-{
+
     public partial class SouthwindContext : DbContext
     {
         public static SouthwindContext Instance { get; } = new SouthwindContext();
@@ -22,4 +22,4 @@ namespace EF_ModelFirst;
 
 
     }
-}
+
