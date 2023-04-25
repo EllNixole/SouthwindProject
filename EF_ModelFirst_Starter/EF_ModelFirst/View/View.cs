@@ -12,7 +12,7 @@ public static class View
         return Console.ReadLine();
     }
 
-    public static (string customerID, string name, string city, string country, string postalCode) GetAddData()
+    public static Customer GetCustomerData()
     {
         Console.Write("\nInput CustomerID: ");
         string customerID = Console.ReadLine();
@@ -25,7 +25,7 @@ public static class View
         Console.Write("\nInput Post Code: ");
         string postalCode = Console.ReadLine();
 
-        return (customerID, name, city, country, postalCode);
+        return new Customer() { CustomerId = customerID, ContactName = name, City = city, Country = country, PostalCode = postalCode};
     }
     public static string GetIDData()
     {

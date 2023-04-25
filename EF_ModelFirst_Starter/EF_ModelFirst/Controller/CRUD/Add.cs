@@ -4,18 +4,14 @@ using System.Data.SqlClient;
 
 namespace EF_ModelFirst;
 
-public class Add : IDataAction
+public class Add : DataAction
 {
-    public void Execute()
+    public void Execute(Customer customer)
     {
-        (string customerId, string name, string city, string country, string postalCode) = View.GetAddData();
-
         using (var db = new SouthwindContext())
         {
-            var newCustomer = new Customer() { CustomerId = customerId, ContactName = name, City = city, Country = country, 
-                PostalCode = postalCode };
 
-            db.Customers.Add(newCustomer);
+            db.Customers.Add(customer);
 
             db.SaveChanges();
 

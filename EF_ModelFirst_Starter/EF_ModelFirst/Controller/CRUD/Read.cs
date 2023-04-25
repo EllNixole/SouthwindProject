@@ -4,12 +4,10 @@ using System.Data.SqlClient;
 
 namespace EF_ModelFirst;
 
-public class Read : IDataAction
+public class Read : DataAction
 {
-    public void Execute()
+    public void Execute(string customerID)
     {
-        string customerID = View.GetIDData();
-
         using (var db = new SouthwindContext())
         {
             switch (customerID.ToLower())
