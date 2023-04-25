@@ -6,7 +6,7 @@ namespace EF_ModelFirst;
 
 public partial class SouthwindContext : DbContext
 {
-     public static SouthwindContext Instance { get; } = new SouthwindContext();
+    public static SouthwindContext Instance { get; } = new SouthwindContext();
 
 
     public DbSet<Customer> Customers { get; set; }
@@ -20,4 +20,5 @@ public partial class SouthwindContext : DbContext
             options.UseSqlServer(@"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = Southwind;");
         }
     }
+}
 
