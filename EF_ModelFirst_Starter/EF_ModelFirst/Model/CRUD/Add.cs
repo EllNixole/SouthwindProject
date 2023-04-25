@@ -15,7 +15,7 @@ public class Add : IDataAction
             var newCustomer = new Customer() { CustomerId = customerId, ContactName = name, City = city, Country = country, 
                 PostalCode = postalCode };
 
-            db.Customers.Create(newCustomer);
+            db.Customers.Add(newCustomer);
 
             db.SaveChanges();
 
