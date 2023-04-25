@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 
 namespace EF_ModelFirst;
 
-public class Create : DataAction
+public class Add : DataAction
 {
     public override void ExecuteQuery( string name, string city, string country, string postalCode)
     {
@@ -11,7 +11,7 @@ public class Create : DataAction
         {
             var newCustomer = new Customer() { ContactName = name, City = city, Country = country, PostalCode = postalCode };
 
-            db.Customers.Create(newCustomer);
+            db.Customers.Add(newCustomer);
 
             db.SaveChanges();
 
