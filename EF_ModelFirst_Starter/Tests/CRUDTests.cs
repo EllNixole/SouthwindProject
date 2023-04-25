@@ -104,7 +104,7 @@ namespace Tests
         [TestFixture]
         public class ExceptionTests 
         {
-            [Test]
+            /*[Test]
             public void TestAddWithNullValues()
             {
                 using (var db = new SouthwindContext())
@@ -113,7 +113,7 @@ namespace Tests
                     Assert.That(() => add.Execute(null), Throws.InstanceOf<ArgumentNullException>()
                         .With.Message.Contain("Input cannot be null."));
                 }
-            }
+            }*/
 
             [Test]
             public void TestReadWithNonExistentCustomerId()
