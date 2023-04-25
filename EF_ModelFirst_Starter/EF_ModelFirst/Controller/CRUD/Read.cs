@@ -6,7 +6,7 @@ namespace EF_ModelFirst;
 
 public class Read : DataAction
 {
-    public void Execute(string customerID)
+    public override void Execute(string customerID)
     {
         using (var db = new SouthwindContext())
         {

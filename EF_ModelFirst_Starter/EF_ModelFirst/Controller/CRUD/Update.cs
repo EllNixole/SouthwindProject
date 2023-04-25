@@ -3,7 +3,7 @@
 namespace EF_ModelFirst;
 public class Update : DataAction
 {
-    public void Execute(string customerID, string column, string value)
+    public override void Execute(string customerID, string column, string value)
     {
         using (var db = new SouthwindContext())
         {
