@@ -1,12 +1,10 @@
 ﻿using System.Data.SqlClient;
 
 namespace EF_ModelFirst;
-public class Update : IDataAction
+public class Update : DataAction
 {
-    public void Execute()
+    public void Execute(string customerID, string column, string value)
     {
-        (string customerID, string column, string value) = View.GetUpdateData();
-
         using (var db = new SouthwindContext())
         {
             var selectedCustomer = db.Customers.Find(customerID);

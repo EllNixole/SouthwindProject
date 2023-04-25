@@ -8,14 +8,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        /*using (var db = new SouthwindContext())
-        {
-            db.Customers.Add(new Customer() { ContactName = "Philip Thomas", City = "IronBridge", CustomerId = "PHILT", PostalCode = "AB1 2CD" });
-            db.Customers.Add(new Customer() { ContactName = "Danyal Saleh", City = "Reading", CustomerId = "DANYS", PostalCode = "AB1 2CB" });
-
-            db.SaveChanges();
-        }*/
-
         Controller();
     }
 
@@ -31,6 +23,21 @@ class Program
         }
 
         var crud = ActionFactory.GetAction(choiceNum);
-        crud.Execute();
+
+        switch (crud)
+        {
+            case Add:
+                crud.Execute(View.GetCustomerData());
+                break;
+            case Read:
+                crud.Execute(View.GetIDData());
+                break;
+            case Update:
+                crud.Execute(View.GetUpdateData().customerID, View.GetUpdateData().column, View.GetUpdateData().value);
+                break;
+            case Delete:
+                crud.Execute(View.GetIDData());
+                break;
+        }
     }
 }
