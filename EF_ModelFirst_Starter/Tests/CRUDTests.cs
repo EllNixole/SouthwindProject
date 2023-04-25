@@ -108,8 +108,6 @@ namespace Tests
                 {
                     var delete = new Delete();
                     delete.Execute(testCustomer1.CustomerId);
-                    //db.Customers.Remove(customerToDelete);
-                    //db.SaveChanges();
                     var deletedCustomer = db.Customers.Find(testCustomer1.CustomerId);
                     Assert.IsNull(deletedCustomer);
                 }
