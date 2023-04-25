@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EF_ModelFirst.Model.CRUD;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 
@@ -9,6 +10,7 @@ class Program
     static void Main(string[] args)
     {
         Controller();
+        
     }
 
     public static void Controller()
