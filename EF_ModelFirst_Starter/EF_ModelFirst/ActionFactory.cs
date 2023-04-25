@@ -4,7 +4,7 @@ namespace EF_ModelFirst;
 
 public class ActionFactory
 {
-    public static DataAction GetAction(int input)
+    public static IDataAction GetAction(int input)
     {
         switch (input)
         {
