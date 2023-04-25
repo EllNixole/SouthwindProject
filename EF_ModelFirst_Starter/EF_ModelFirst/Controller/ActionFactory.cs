@@ -1,6 +1,4 @@
-﻿
-
-namespace EF_ModelFirst;
+﻿namespace EF_ModelFirst;
 
 public class ActionFactory
 {
