@@ -27,16 +27,17 @@ namespace Tests
                 using (var db = new SouthwindContext())
                 {
                     var add = new Add();
-                    add.ExecuteQuery("TestId2", "Test2", "TestCity2", "TestCountry2", "TestPostalCode2");
+                    var testCustomer2 = new Customer() { CustomerId = "TestId2", ContactName = "Test2", City = "TestCity2", Country = "TestCountry2", PostalCode = "TestPostalCode2" };
+                    add.Execute(testCustomer2);
 
                     var customer = db.Customers.FirstOrDefault(c => c.ContactName == "Test2");
 
                     Assert.IsNotNull(customer);
-                    Assert.AreEqual("TestId2", customer.CustomerId);
-                    Assert.AreEqual("Test2", customer.ContactName);
-                    Assert.AreEqual("TestCity2", customer.City);
-                    Assert.AreEqual("TestCountry2", customer.Country);
-                    Assert.AreEqual("TestPostalCode2", customer.PostalCode);
+                    Assert.That(customer.CustomerId, Is.EqualTo("TestId2"));
+                    Assert.That(customer.ContactName, Is.EqualTo("Test2"));
+                    Assert.That(customer.City, Is.EqualTo("TestCity2"));
+                    Assert.That(customer.Country, Is.EqualTo("TestCountry2"));
+                    Assert.That(customer.PostalCode, Is.EqualTo("TestPostalCode2"));
                 }
             }
 
@@ -46,7 +47,7 @@ namespace Tests
                 using (var db = new SouthwindContext())
                 {
                     var read = new Read();
-                    read.ExecuteQuery(-1);
+                    read.Execute("all");
 
                     Assert.IsTrue(db.Customers.Count() >= 1);
                 }
@@ -58,15 +59,15 @@ namespace Tests
                 using (var db = new SouthwindContext())
                 {
                     var read = new Read();
-                    read.ExecuteQuery(testCustomer1.CustomerId);
+                    read.Execute(testCustomer1.CustomerId);
 
                     var customer = db.Customers.Find(testCustomer1.CustomerId);
 
-                    Assert.AreEqual("TestId1", customer.CustomerId);
-                    Assert.AreEqual("Test1", customer.ContactName);
-                    Assert.AreEqual("TestCity1", customer.City);
-                    Assert.AreEqual("TestCountry1", customer.Country);
-                    Assert.AreEqual("TestPostalCode1", customer.PostalCode);
+                    Assert.That(customer.CustomerId, Is.EqualTo("TestId1"));
+                    Assert.That(customer.ContactName, Is.EqualTo("Test1"));
+                    Assert.That(customer.City, Is.EqualTo("TestCity1"));
+                    Assert.That(customer.Country, Is.EqualTo("TestCountry1"));
+                    Assert.That(customer.PostalCode, Is.EqualTo("TestPostalCode1"));
                 }
             }
 
@@ -76,12 +77,12 @@ namespace Tests
                 using (var db = new SouthwindContext())
                 {
                     var update = new Update();
-                    update.ExecuteQuery(testCustomer1.CustomerId, "ContactName", "NewName");
+                    update.Execute(testCustomer1.CustomerId, "ContactName", "NewName");
 
                     var customer = db.Customers.Find(testCustomer1.CustomerId);
 
                     Assert.IsNotNull(customer);
-                    Assert.AreEqual("NewName", customer.ContactName);
+                    Assert.That(customer.ContactName, Is.EqualTo("NewName"));
                 }
             }
 
@@ -91,7 +92,7 @@ namespace Tests
                 using (var db = new SouthwindContext())
                 {
                     var delete = new Delete();
-                    delete.ExecuteQuery(testCustomer1.CustomerID);
+                    delete.Execute(testCustomer1.CustomerId);
                     //db.Customers.Remove(customerToDelete);
                     //db.SaveChanges();
                     var deletedCustomer = db.Customers.Find(testCustomer1.CustomerId);
@@ -109,7 +110,7 @@ namespace Tests
                 using (var db = new SouthwindContext())
                 {
                     var add = new Add();
-                    Assert.That(() => add.ExecuteQuery(null, null, null, null, null), Throws.InstanceOf<ArgumentNullException>()
+                    Assert.That(() => add.Execute(null), Throws.InstanceOf<ArgumentNullException>()
                         .With.Message.Contain("Input cannot be null."));
                 }
             }
@@ -120,7 +121,7 @@ namespace Tests
                 using (var db = new SouthwindContext())
                 {
                     var read = new Read();
-                    Assert.That(() => read.ExecuteQuery("NonExistentId"), Throws.InstanceOf<ArgumentNullException>()
+                    Assert.That(() => read.Execute("NonExistentId"), Throws.InstanceOf<ArgumentNullException>()
                     .With.Message.Contain("Cannot find customer with that ID."));
                 }
             }
@@ -131,7 +132,7 @@ namespace Tests
                 using (var db = new SouthwindContext())
                 {
                     var update = new Update();
-                    Assert.That(() => update.ExecuteQuery("NonExistentId", "ContactName", "NewName"), Throws.InstanceOf<ArgumentNullException>()
+                    Assert.That(() => update.Execute("NonExistentId", "ContactName", "NewName"), Throws.InstanceOf<ArgumentNullException>()
                     .With.Message.Contain("Cannot find customer with that ID."));
                 }
             }
@@ -142,7 +143,7 @@ namespace Tests
                 using (var db = new SouthwindContext())
                 {
                     var delete = new Delete();
-                    Assert.That(() => delete.ExecuteQuery("NonExistentId"), Throws.InstanceOf<ArgumentNullException>()
+                    Assert.That(() => delete.Execute("NonExistentId"), Throws.InstanceOf<ArgumentNullException>()
                     .With.Message.Contain("Cannot find customer with that ID."));
                 }
             }
