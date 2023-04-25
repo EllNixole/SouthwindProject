@@ -29,7 +29,7 @@ public static class View
     }
     public static string GetIDData()
     {
-        Console.Write("\nInput CustomerID (type \"all\" to view all data): ");
+        Console.Write("\nInput CustomerID (type \"all\" to view all data if reading): ");
         string customerID = Console.ReadLine().ToLower();
 
         return customerID;
@@ -45,5 +45,24 @@ public static class View
         string value = Console.ReadLine();
 
         return (customerID, column, value);
+    }
+
+    public static bool Continue()
+    {
+        Console.Write("Would you like to continue(y/n): ");
+        string choice = Console.ReadLine();
+
+        while(choice.ToLower() != "y" && choice.ToLower() != "n")
+        {
+            Console.Write("Invalid Choice. Try again: ");
+            choice = Console.ReadLine();
+        }
+
+        if (choice.Equals("y"))
+        {
+            Console.Clear();
+            return true;
+        }            
+        return false;
     }
 }
