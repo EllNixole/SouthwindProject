@@ -33,7 +33,8 @@ class Program
                 crud.Execute(View.GetIDData());
                 break;
             case Update:
-                crud.Execute(View.GetUpdateData().customerID, View.GetUpdateData().column, View.GetUpdateData().value);
+                (string customerID, string column, string value) = View.GetUpdateData();
+                crud.Execute(customerID, column, value);
                 break;
             case Delete:
                 crud.Execute(View.GetIDData());

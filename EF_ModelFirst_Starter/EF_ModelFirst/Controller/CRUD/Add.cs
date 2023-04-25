@@ -6,7 +6,7 @@ namespace EF_ModelFirst;
 
 public class Add : DataAction
 {
-    public void Execute(Customer customer)
+    public override void Execute(Customer customer)
     {
         using (var db = new SouthwindContext())
         {

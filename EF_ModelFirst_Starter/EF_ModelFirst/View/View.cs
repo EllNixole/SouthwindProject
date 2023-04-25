@@ -29,8 +29,8 @@ public static class View
     }
     public static string GetIDData()
     {
-        Console.Write("\nInput CustomerID (type \"all\" to view all data: ");
-        string customerID = Console.ReadLine();
+        Console.Write("\nInput CustomerID (type \"all\" to view all data): ");
+        string customerID = Console.ReadLine().ToLower();
 
         return customerID;
     }
